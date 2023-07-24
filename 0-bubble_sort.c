@@ -9,13 +9,12 @@
 
 void bubble_sort(int *array, size_t size)
 {
-	size_t index;
 	int swap_holder, count;
 
 	if (!array || size <= 0)
 		return;
 
-	do{
+	do {
 		count = 0;
 
 		for (index = 0; index < size - 1; index++)
@@ -25,9 +24,9 @@ void bubble_sort(int *array, size_t size)
 				count = 1;
 				swap_holder = array[index];
 				array[index] = array[index + 1];
-				array[index +1] = swap_holder;
+				array[index + 1] = swap_holder;
 				print_array(array, size);
 			}
 		}
-	}while (count == 1);
+	} while (count == 1);
 }
