@@ -20,8 +20,9 @@ typedef struct listint_s
 
 /*structure declaration*/
 void print_array(const int *, size_t);
+void print_list(const listint_t *);
 
 /*function declarationn*/
 void bubble_sort(int *, size_t);
 
-#endif /* sort */
+#endif 
