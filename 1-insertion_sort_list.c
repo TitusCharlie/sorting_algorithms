@@ -2,25 +2,30 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	int count;
-	listint_t index;
+	long unsigned int i;
+	listint_t *temp, *current, *swap;
 
-	if (!list->n || sizeof(list->n) < 2)
+	if (sizeof(*list) < 2 || !(*list))
 		return;
+	for (i = 0; i < sizeof(*list); i++)
+	{
+		current = (*list)->next;
+		temp = current->next;
 
-	do {
-		count = 0;
-
-		for (index = 0; index < sizeof(list->n); index++)
+		while ((current != NULL) && temp < current)
 		{
-			if (list->n[index] > list->n[index +1])
-			{
-				count = 1;
-
-				swap_holder = list->n[index];
-				list->n[index] = list->n[index + 1];
-				list->n[index] = swap_holder;
-				print_list(list);
-	}while count == 1;
-
+			swap = temp;
+			temp = current;
+			current = swap;
+			print_list(*list);
+			current = current->prev;
+		}
+		print_list(*list);
+	}
 }
+
+
+	     
+	  
+
+
