@@ -23,7 +23,7 @@ listint_t *swap_nodes(listint_t *node, listint_t **list)
 	else
 		*list = current_node;
 
-	return current_node;
+	return (current_node);
 }
 
 /**
