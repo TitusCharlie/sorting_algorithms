@@ -1,31 +1,30 @@
 #include "sort.h"
+/**
+ * selection_sort - function that sorts an array of integers in ascending
+ * order using the Selection sort algorithm
+ * @size: size of the array
+ * @array: list with numbers
+ */
 
 void insertion_sort_list(listint_t **list)
 {
-	long unsigned int i;
-	listint_t *temp, *current, *swap;
-
-	if (sizeof(*list) < 2 || !(*list))
+	listint_t *temp;
+	if (!(*list)->next || !(*list))
 		return;
-	for (i = 0; i < sizeof(*list); i++)
+	while ((*list)->next)
 	{
-		current = (*list)->next;
-		temp = current->next;
+		temp = (*list)->next;
 
-		while ((current != NULL) && temp < current)
+		while ((*list)->prev && (*list)->next->n < (*list)->prev->next->n)
 		{
-			swap = temp;
-			temp = current;
-			current = swap;
+			temp->prev->next = temp->next;
+			temp->next = temp->prev;
+			temp->prev = temp->prev->prev;
+			temp->next->prev = temp;
+			if (!temp->prev)
+				(*list) = temp;
 			print_list(*list);
-			current = current->prev;
 		}
-		print_list(*list);
+		(*list)->next = (*list)->next->next;
 	}
 }
-
-
-	     
-	  
-
-
